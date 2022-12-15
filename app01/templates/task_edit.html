@@ -1,0 +1,31 @@
+{% extends "layout.html" %} }
+
+{% block content %}
+    <div class="container" style="padding-top: 20px">
+        <div class="panel panel-default" >
+            <h4>{{ title }}-{{ row_obj.title }}</h4>
+
+            <form style="padding-left: 20px" method="post">
+                {% csrf_token %}
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <div class="row">
+                            <h5>任务状态</h5>
+                            <select class="form-control" name="status">
+                                {% for item in row_obj.status_choices %}
+                                    <option value="{{ item.0 }}">{{ item.1 }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-5">
+                    <button style="margin-top: 55px; margin-left: -14px" type="submit" class="btn btn-primary" href="#">提 交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+

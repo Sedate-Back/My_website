@@ -1,0 +1,27 @@
+<!-- 个人主页设计 -->
+{% extends 'layout.html' %}
+{% block content %}
+    {% load static %}
+    <div class="container">
+        <div class="media" style="margin-top: 50px; background-color: white">
+            <div class="media-left media-middle">
+                <a href="#">
+                    <img class="media-object" src="{% static 'img/32X32.jpg'%}" alt="..." style="margin-top: -30px">
+                </a>
+            </div>
+            <div class="media-body">
+                <strong><h2 class="media-heading;" style="color:#6f5499;"><p class="text-uppercase;">{{ request.session.info.name }}</p></h2></strong>
+                <div class="row" style="margin-top: 25px">
+                    <div class="col-md-4">最近登录状态频繁，调整后台中。。。</div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3"><span style="font-size: 20px; color: #6f5499;">2</span><span>  任务未完成</span></div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3"><span style="font-size: 20px;color: #6f5499;">2</span><span>  文章</span></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

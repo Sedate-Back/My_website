@@ -1,0 +1,21 @@
+<!-- 主页设计 -->
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container">
+        <div class="bs-example" data-example-id="simple-jumbotron">
+            <div class="jumbotron">
+                <div class="container">
+                    <h1 style="color:#6f5499;">Keep on Create 私人领地</h1>
+                    <p>
+                        <span style="color:#6f5499; font-size: 20px">欢迎回来,</span>
+                        <span style="font-size: 32px">{{ request.session.info.name }}！</>
+                    </p>
+                    <p>用来记录、管理、计划自己的开发生涯，目前为闭源的一个Django架构平台，分享程序猿开发心得、开发工具、知识共享等；
+                    后续会逐步开发任务邮箱提醒功能、小程序模块对接功能等；</p>
+                    <p><a class="btn btn-default btn-lg;" href="/userinfo/index/" role="button" style="color:#6f5499;font-size: 18px">跳 转</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

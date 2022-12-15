@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Keep on Create</title>
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.min.css' %}">
+    <style>
+        .account {
+            width: 450px;
+            border: 2px solid #dddddd;
+            border-radius: 8px;
+            box-shadow: 5px 5px 20px #aaa;
+
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 120px;
+            padding: 20px 40px;
+        }
+
+        .account h2 {
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="account">
+    <h2>用 户 登 录</h2>
+    <!-- novalidate 不让前端的浏览器校验，-->
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <div class="form-group">
+            <label>用户名</label>
+            {{ form.name }}
+            <span style="color: red;">{{ form.name.errors.0 }}</span>
+        </div>
+        <div class="form-group">
+            <label>密码</label>
+            {{ form.password }}
+            <span style="color: red;">{{ form.password.errors.0 }}</span>
+        </div>
+
+        <div class="form-group">
+            <label for="id_code">图片验证码</label>
+            <div class="row">
+                <div class="col-xs-7">
+                    {{ form.code }}
+                    <span style="color: red;">{{ form.code.errors.0 }}</span>
+                </div>
+                <div class="col-xs-5">
+                    <img id="image_code" src="/image/code/" style="width: 120px;">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-xs-3">
+                    <input type="submit" value="登 录" class="btn btn-primary">
+                </div>
+                <div class="col-xs-3">
+                    <a href="#" class="btn btn-success">注 册 </a>
+                </div>
+                <div class="col-xs-6">
+                    <p style="color: #3c3c3c">注意：成功登录后，账号持续登录一周，一周后需重新登录。</p>
+                </div>
+            </div>
+
+    </form>
+</div>
+
+</body>
+</html>

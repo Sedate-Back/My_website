@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Keep on Create</title>
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-datepicker/css/bootstrap-datepicker.css' %}">
+    <style>
+        .navbar {
+            border-radius: 0;
+        }
+    </style>
+    <style type="text/css">
+        tr tr{list-style:none;}tr tr{counter-increment: antzone;}tr tr:before{content:counter(antzone)".";color: red;}
+    </style>
+
+</head>
+<body>
+<!-- 导航条 -->
+<div style="background-color: #f8f8f8">
+    <nav class="navbar navbar-default" style="background-color: white">
+        <div class="container">
+            <div class="navbar-header" style="background-color: white">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only"><strong>持续创造 @私人领地</strong></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- 顶部边栏左边 -->
+                <a class="navbar-brand" style="color: #6f5499" href="/index/"><strong>持续创造 @私人领地</strong></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color: white">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #6f5499"> 个人空间展示 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">学习记录</a></li>
+                            <li><a href="#">学习心得</a></li>
+                            <li><a href="#">更多信息</a></li>
+                            <li role="separator" class="divider"></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="/depart/list/" style="color: #6f5499">学习数据</a></li>
+                    <li><a href="/userinfo/list" style="color: #6f5499">所有成员</a></li>
+                    <li><a href="/datatime/list" style="color: #6f5499">排行榜</a></li>
+                    <li><a href="/question/list" style="color: #6f5499">问题汇总</a></li>
+                    <li><a href="/task/list" style="color: #6f5499">计划列表</a></li>
+                </ul>
+
+                <!-- 顶部边栏右边 -->
+                <ul class="nav navbar-nav navbar-right" style="background-color: white">
+                    <li><a href="https://www.github.com/" style="color: #6f5499" target="_blank"> Github官网 </a></li>
+                    <li><a href="#" style="color: #6f5499"> 注册 </a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #6f5499">
+                            {{ request.session.info.name }}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">个人中心</a></li>
+                            <li><a href="#">修改密码</a></li>
+                            <li><a href="#">更多信息</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/logout/">退出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<!-- 表单 -->
+<div style="padding-bottom: 200px">
+    {% block content %}
+    {% endblock %}
+</div>
+</div>
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-3.4.1/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-datepicker/js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js' %}"></script>
+
+<script>
+    $(function (){
+        $('#dt').datepicker({
+            format:'yyyy-mm-dd',
+            startDate: '0',
+            language:"zh-CN",
+            autoclose: true
+        });
+    })
+</script>
+</body>
+</html>
