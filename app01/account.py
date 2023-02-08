@@ -8,7 +8,7 @@ from io import BytesIO  # 将生成在内存中的图片给浏览器读取
 
 
 class LoginForm(forms.Form):
-    """ 定义登录的Form组件，相比较modelfor，需要自己来写展示的字段和添加的样式 """
+    """ 定义登录的Form组件，相比较modelform，需要自己来写展示的字段和添加的样式 """
     name = forms.CharField(label="用户名",
                            widget=forms.TextInput(attrs={"class": "form-control"}),
                            required=True)
@@ -28,7 +28,7 @@ class LoginForm(forms.Form):
         """ 把在登录页面输入的密码，拿到后用md5的方式加密，并返回 """
         pwd = self.cleaned_data.get("password")
         return md5(pwd)
-
+        # return pwd
 
 def login(request):
     """ 定义登录页面 """

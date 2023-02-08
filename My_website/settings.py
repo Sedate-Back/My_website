@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-&w&656tw$1ydny^&psng@&&$sbvb(fx$%)n0&brjk^c0^6fd4x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "5892d75c77.imdo.co"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -85,6 +85,9 @@ WSGI_APPLICATION = "My_website.wsgi.application"  # 服务端组件，代替局�
 # }
 
 # 本地MySQL的配置与连接
+import pymysql
+pymysql.version_info=(1, 4, 13, "final", '0')
+pymysql.install_as_MySQLdb()
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
