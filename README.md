@@ -54,7 +54,7 @@
 
 ## 项目结构
 
-<img src="src\项目结构.png" alt="项目结构" style="zoom:50%;" />
+<img src="src/项目结构.png" alt="项目结构" style="zoom:50%;" />
 
 
 
