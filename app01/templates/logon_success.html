@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Keep on Create</title>
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.min.css' %}">
+    <style>
+        .account {
+            width: 450px;
+            border: 2px solid #dddddd;
+            border-radius: 8px;
+            box-shadow: 5px 5px 20px #aaa;
+
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 120px;
+            padding: 20px 40px;
+        }
+
+        .account h2 {
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="account">
+    <h2>{{ name }}注册成功，稍后跳转到登陆页面。。。</h2>
+    <!-- novalidate 不让前端的浏览器校验，-->
+    <h3>也可以点击一下按钮进行跳转 <a href="login.html">马上登陆</a></h3>
+</div>
+<script type="text/javascript">
+
+    onload = function () {
+        setInterval(go, 1000);
+    };
+
+    let x = 3; //利用了全局变量来执行
+    function go() {
+        x--;
+        if (x > 0) {
+            document.getElementById("sp").innerHTML = x; //每次设置的x的值都不一样了。
+        } else {
+            location.href = 'login.html';
+        }
+    }
+</script>
+</body>
+</html>

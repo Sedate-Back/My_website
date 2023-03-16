@@ -1,6 +1,8 @@
 <!-- 主页设计 -->
 {% extends 'layout.html' %}
 {% block content %}
+
+    {% load static %}
     <div class="container">
         <div class="bs-example" data-example-id="simple-jumbotron">
             <div class="jumbotron">
@@ -8,14 +10,25 @@
                     <h1 style="color:#6f5499;">Keep on Create 私人领地</h1>
                     <p>
                         <span style="color:#6f5499; font-size: 20px">欢迎回来,</span>
-                        <span style="font-size: 32px">{{ request.session.info.name }}！</>
+                        <span style="font-size: 32px">{{ request.session.info.name }}.</span>
+                        <span style="font-size: 32px">{{ message }}</span>
+                        {{ id_more }}
                     </p>
-                    <p>用来记录、管理、计划自己的开发生涯，目前为闭源的一个Django架构平台，分享程序猿开发心得、开发工具、知识共享等；
-                    后续会逐步开发任务邮箱提醒功能、小程序模块对接功能等；</p>
-                    <p><a class="btn btn-default btn-lg;" href="/userinfo/index/" role="button" style="color:#6f5499;font-size: 18px">跳 转</a></p>
+
+                    <hr style="filter: alpha(opacity=100, finishOpacity=0, style=3)" width="80%" color="#987cb9" size="3">
+
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="{% static 'video/music_daerwen.mp4' %}"></iframe>
+                    </div>
+
+                    <hr style="filter: alpha(opacity=100, finishOpacity=0, style=3)" width="80%" color="#987cb9" size="3">
+                    <div style="margin-top: 10px"><p>用来记录、管理、计划自己的开发生涯，分享程序猿开发心得、开发工具、知识共享等；
+                        后续会逐步开发任务邮箱提醒功能、小程序模块对接功能等；</p></div>
+
+
+
                 </div>
             </div>
         </div>
     </div>
-
 {% endblock %}

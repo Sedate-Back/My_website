@@ -35,18 +35,16 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color: white">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #6f5499"> 个人空间展示 <span class="caret"></span></a>
+                        <a href="/content/list/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #6f5499"> 个人空间展示 <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">学习记录</a></li>
-                            <li><a href="#">学习心得</a></li>
+                            <li><a href="/content/add/">内容创作</a></li>
+                            <li><a href="#">内容查询</a></li>
                             <li><a href="#">更多信息</a></li>
                             <li role="separator" class="divider"></li>
                         </ul>
                     </li>
-
-                    <li><a href="/depart/list/" style="color: #6f5499">学习数据</a></li>
+                    
                     <li><a href="/userinfo/list" style="color: #6f5499">所有成员</a></li>
-                    <li><a href="/datatime/list" style="color: #6f5499">排行榜</a></li>
                     <li><a href="/question/list" style="color: #6f5499">问题汇总</a></li>
                     <li><a href="/task/list" style="color: #6f5499">计划列表</a></li>
                 </ul>
@@ -54,8 +52,8 @@
                 <!-- 顶部边栏右边 -->
                 <ul class="nav navbar-nav navbar-right" style="background-color: white">
                     <li><a href="https://www.csdn.net/?spm=1011.2266.3001.4476" style="color: #6f5499" target="_blank"> CSDN博客 </a></li>
-                    <li><a href="https://gitee.com/sedate-0521/my_website" style="color: #6f5499" target="_blank"> Gitee个人控件 </a></li>
-                    <li><a href="#" style="color: #6f5499"> 注册 </a></li>
+                    <li><a href="https://gitee.com/sedate-0521/my_website" style="color: #6f5499" target="_blank"> Gitee个人空间 </a></li>
+                    <li><a href="/logon/" style="color: #6f5499"> 注册 </a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #6f5499">
                             {{ request.session.info.name }}

@@ -7,17 +7,77 @@
             <div class="panel-heading">
                 <h3 class="panel-title"> 新建团队成员 </h3>
             </div>
-            <div class="panel-body">
-                <form method="post" novalidate>
+
+            <div class="panel panel-body">
+                <!-- 添加成员表单 -->
+                <!-- 用户名 密码  所属部门（需要遍历选择）职位  信息 邮箱 -->
+                <form style="padding-left: 20px" method="post">
                     {% csrf_token %}
-                    {% for field in form %}
+
+                    <div class="col-md-5">
+                        <!-- 用户名 -->
                         <div class="form-group">
-                            <label> {{ field.label }}</label>
-                            {{ field.name }}
-                            <span style="color: red">{{ field.errors.0 }}</span>
+                            <div class="row">
+                                <h5> 用户名 </h5>
+                                <!-- 填写框 -->
+                                <input type="text" class="form-control" placeholder="用户名" name="name">
+                            </div>
                         </div>
-                    {% endfor %}
-                    <button type="submit" class="btn btn-primary"> 提 交</button>
+                        <!-- 所属部门（需要遍历选择） -->
+                        <div class="form-group">
+                            <div class="row">
+                                <h5> 所属部门 </h5>
+                                <select class="form-control" name="depart_id">
+                                    <!-- 选择框 -->
+                                    {% for item in depart %}
+                                        <option value="{{ item.id }}">{{ item.title }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <!-- 详细信息 -->
+                        <div class="form-group">
+                            <div class="row">
+                                <h5> 详细信息 </h5>
+                                <input type="text" class="form-control" placeholder="详细信息" name="message">
+                            </div>
+                        </div>
+
+                        <button style="margin-top: 30px; margin-left: -14px" type="submit" class="btn btn-primary"
+                                href="#">提 交
+                        </button>
+                    </div>
+
+                    <div class="col-md-1"><!-- 分割线区间 --></div>
+
+                    <div class="col-md-5">
+                        <!-- 密码 -->
+                        <div class="form-group">
+                            <div class="row">
+                                <h5> 密码 </h5>
+                                <!-- 填写框 -->
+                                <input type="password" class="form-control" placeholder="密码" name="password">
+                            </div>
+                        </div>
+                        <!-- 职位 -->
+                        <div class="form-group">
+                            <div class="row">
+                                <h5> 职位 </h5>
+                                <!-- 填写框 -->
+                                <input type="text" class="form-control" placeholder="职位" name="job">
+                            </div>
+                        </div>
+                        <!-- 邮箱 -->
+                        <div class="form-group">
+                            <div class="row">
+                                <h5> 邮箱 </h5>
+                                <!-- 填写框 -->
+                                <input type="email" class="form-control" placeholder="邮箱" name="email">
+                            </div>
+                        </div>
+
+
+                    </div>
                 </form>
             </div>
         </div>

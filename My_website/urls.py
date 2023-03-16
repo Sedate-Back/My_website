@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app01 import views, account
+from app01 import views, account, content
 
 urlpatterns = [
     # path("admin/", admin.site.urls),
@@ -24,6 +24,7 @@ urlpatterns = [
     path('team/add/', views.team_add),
     path("team/delete/", views.team_delete),
     path("team/<int:nid>/edit/", views.team_edit),
+
     # 用户信息url
     path('userinfo/list/', views.userinfo_list),
     path('userinfo/add/', views.userinfo_add),
@@ -42,10 +43,19 @@ urlpatterns = [
     path("login/", account.login),
     path("logout/", account.logout),
     path("image/code/", account.image_code),
+    path("logon/", account.logon),
+    # path("logon/succ/", account.logon_succ),
+
 
     # 首页
     path("index/", account.index),
 
     # 个人内容页
-    path("userinfo/index/", account.index_userinfo)
+    path("userinfo/index/", account.index_userinfo),
+
+    # 内容页
+    path("content/list/", content.content_list),
+    path("content/add/", content.content_add),
+
+
 ]

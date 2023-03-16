@@ -96,14 +96,25 @@ class UserinfoModelForm(forms.ModelForm):
 def userinfo_add(request):
     """  添加用户 """
     if request.method == "GET":
-        form = UserinfoModelForm()
-        return render(request, "userinfo_add.html", {"form": form})
+        # form = UserinfoModelForm()
+        dict_user = {
+            'depart': models.Team.objects.all()
+        }
+        return render(request, "userinfo_add.html", dict_user)
 
-    form = UserinfoModelForm(data=request.POST)
-    if form.is_valid():
-        form.save()
-        return redirect("/userinfo/list/")
-    return render(request, "userinfo_add.html", {"form": form})
+    name = request.POST.get("name")
+    password = request.POST.get("password")
+    depart_id = request.POST.get("depart_id")
+    job = request.POST.get("job")
+    email = request.POST.get("email")
+    message = request.POST.get("message")
+
+    # 加密password
+    # 1 获取用户填写的密码
+    # 2 用md5 加密 123456 => 728032b419346e034d37f8a135105c6f
+    password = md5(password)
+    models.Userinfo.objects.create(name=name, password=password, depart_id=depart_id, job=job, email=email, message=message)
+    return redirect('/userinfo/list')
 
 
 def userinfo_delete(request):
@@ -117,19 +128,40 @@ def userinfo_edit(request, nid):
     """ 编辑用户信息 """
     if request.method == "GET":
         row_obj = models.Userinfo.objects.filter(id=nid).first()
+        print("row_obj.name: ", row_obj.name)
         form = UserinfoModelForm(instance=row_obj)
         return render(request, "userinfo_edit.html", {"form": form})
 
     form = UserinfoModelForm(data=request.POST)
     if form.is_valid():
-        form.save()
-        return redirect("/userinfo/list/")
+        # 如果数据存在，就取出form的数据，进行逻辑处理
+        # {'name': 'linyao', 'job': '前端工程师', 'email': 'linyao@qq.com',
+        # 'message': '待补充', 'password': '1f9066315a310a154eb32786a2c771bf', 'depart': <Team: 全栈工程师>}
+        # 1。 判断用户名是否唯一
+        name_obj = models.Userinfo.objects.filter(name=form.cleaned_data["name"])
+        #  or form.cleaned_data["name"]== models.Userinfo.objects.filter(id=nid).first().name 未更改名称
+        if not name_obj or form.cleaned_data["name"] == models.Userinfo.objects.filter(id=nid).first().name:
+            # 如果对象不存在，就可以进行更新数据
+            name = form.cleaned_data["name"]
+            password = form.cleaned_data["password"]
+            job = form.cleaned_data["job"]
+            email = form.cleaned_data["email"]
+            message = form.cleaned_data["message"]
+            depart_id = form.cleaned_data["depart"].id
+            models.Userinfo.objects.filter(id=nid).update(name=name, password=password,
+                                                          job=job, email=email, message=message, depart_id=depart_id)
+            return redirect("/userinfo/list/")
+        # 如果名称重复了，就报错
+        form.add_error("name", "This name is exist! Please try input another one!")
     return render(request, "userinfo_edit.html", {"form": form})
 
 
 def task_list(request):
     """  任务表 """
-    data = models.Task.objects.all()
+    if request.method == "GET":
+        data = models.Task.objects.all()
+        return render(request, 'task_list.html', {"data": data})
+    data = models.Task.objects.all().order_by("status")
     return render(request, 'task_list.html', {"data": data})
 
 
@@ -180,3 +212,5 @@ def task_edit(request, nid):
     # models.Task.objects.filter(id=nid).update(level=level, title=title, detail=detail, name=name, status=status)
     models.Task.objects.filter(id=nid).update(status=status)
     return redirect('/task/list/')
+
+
