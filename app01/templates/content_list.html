@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container">
+        {#        顶部内容#}
+        <button type="button" class="btn btn-success" style="margin-bottom: 20px">
+            <a href="/content/add/" style="color: #122b40"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"
+                                                     style="margin-right: 1px"></span> 添加内容 </a>
+
+            <form method="post">
+                {% csrf_token %}
+                <button style="margin-top: -15px ;margin-left: 85%" type="submit" class="btn btn-success" href="#">筛
+                    选
+                </button>
+            </form>
+        </button>
+
+        {# 内容展示 #}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <span class="glyphicon glyphicon-list" aria-hidden="true" style="margin-right: 5px"> 内容总览</span>
+                </h3>
+            </div>
+
+            <div class="panel-body">
+                <div class="bs-example" data-example-id="hoverable-table">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>作者/Author</th>
+                            <th>创造时间/Create time</th>
+                            <th>创作内容/Create Content</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for obj in data %}
+                            <tr>
+                                <td>{{ obj.name.name }}</td>
+                                <td>{{ obj.time }}</td>
+                                <td>{{ obj.content }}</td>
+
+                                <td>
+                                    <a type="button" class="btn btn-primary btn-sm"
+                                       href="/content/{{ obj.id }}/edit">编辑</a>
+                                    <a type="button" class="btn btn-danger btn-sm"
+                                       href="/content/delete?nid={{ obj.id }}">删除</a>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

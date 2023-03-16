@@ -2,9 +2,11 @@
 
 {% block content %}
     <div class="container" style="padding-top: 20px">
-        <div class="panel panel-default" >
+        <div class="panel panel-heading">
             <h4>新增任务</h4>
+        </div>
 
+        <div class="panel panel-body">
             <form style="padding-left: 20px" method="post">
                 {% csrf_token %}
                 <div class="col-md-5">
@@ -21,7 +23,7 @@
                     <div class="form-group">
                         <div class="row">
                             <h5>任务名称</h5>
-                            <input type="text" class="form-control" placeholder="任务名称" name="title" >
+                            <input type="text" class="form-control" placeholder="任务名称" name="title">
                         </div>
                     </div>
                     <div class="form-group">
@@ -41,7 +43,7 @@
                     <div class="form-group">
                         <div class="row">
                             <h5>详细信息</h5>
-                            <input type="text" class="form-control" placeholder="详细信息" name="detail" >
+                            <input type="text" class="form-control" placeholder="详细信息" name="detail">
                         </div>
                     </div>
                     <div class="form-group">
@@ -53,12 +55,15 @@
                                 {% endfor %}
                             </select>
                         </div>
-                    <button style="margin-top: 55px; margin-left: -14px" type="submit" class="btn btn-primary" href="#">提 交</button>
+                        <button style="margin-top: 55px; margin-left: -14px" type="submit" class="btn btn-primary"
+                                href="#">提 交
+                        </button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
+
 
 {% endblock %}
 

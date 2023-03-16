@@ -4,6 +4,10 @@
     <button type="button" class="btn btn-success" style="margin-bottom: 20px">
         <a href="/userinfo/add/" style="color: #122b40"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="margin-right: 1px"></span> 添加 </a>
     </button>
+    <button type="button" class="btn btn-primary" style="margin-bottom: 20px">
+        <a href="/team/list/" style="color: #122b40"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="margin-right: 1px"></span> 团队 </a>
+    </button>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">
@@ -30,7 +34,7 @@
                         <td>{{ obj.job }}</td>
                         <td>{{ obj.depart.title }}</td>
                         <td>
-                            <a type="button" class="btn btn-primary btn-sm" href=/userinfo/{{ obj.id }}/edit/#">编辑</a>
+                            <a type="button" class="btn btn-primary btn-sm" href="/userinfo/{{ obj.id }}/edit/#">编辑</a>
                             <a type="button" class="btn btn-danger btn-sm" href="/userinfo/delete?nid={{ obj.id }}">删除</a>
                         </td>
                     </tr>
